@@ -6,7 +6,7 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-    const Backend_Url = 'hmb.up.railway.app';
+    const Backend_Url = 'https://hmb.up.railway.app';
     const navigate = useNavigate();
 
     const [doctors, setDoctors] = useState([]);
