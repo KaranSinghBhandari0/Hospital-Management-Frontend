@@ -11,30 +11,26 @@ export default function Login() {
 
   useEffect(()=> {
     if(isAuthenticated) {
-      toast.error('Already logged in');
-      navigate('/');
+      toast.error('already logged in');
+      navigate('/')
     }
-  },[])
+  },[isAuthenticated])
   
-  // State to manage form inputs
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: '',
+    password: ''
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleFormToggle = (e) => {
     e.preventDefault();
     setIsLogin(!isLogin);
-    setFormData({ username: '', email: '', password: '' }); // Reset form data on toggle
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({ username: '', email: '', password: '' });
   };
 
   const handleSubmit = (e) => {
